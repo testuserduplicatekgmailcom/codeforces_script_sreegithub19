@@ -1,1 +1,36 @@
+name: Java CI
 
+on:
+  push:
+    branches:
+      - main  # Adjust the branch name as needed
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '21' # Specify your Java version
+          distribution: 'adopt'
+
+      - name: Build and run with Maven
+        run: |
+
+         git clone -b javac_ https://github.com/sreegithub19/codeforces_script.git
+         cd codeforces_script
+         
+         mvn clean install && mvn compile && mvn exec:java <<EOF
+         2
+         EOF
+
+      - name: Build Kotlin annotations and run with Maven
+        run: |
+          cd annotations_
+          mvn clean install && mvn clean compile && mvn exec:java
