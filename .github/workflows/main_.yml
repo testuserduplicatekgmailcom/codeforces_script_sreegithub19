@@ -32,5 +32,5 @@ jobs:
 
       - name: Build Kotlin annotations and run with Maven
         run: |
-          cd annotations_
+          cd codeforces_script/annotations_
           mvn clean install && mvn clean compile && mvn exec:java
